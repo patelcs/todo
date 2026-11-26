@@ -19,5 +19,7 @@ COPY backend/package.json ./
 COPY backend/src ./src
 COPY --from=client-build /user/local/app/dist ./src/static
 EXPOSE 3000
+RUN mkdir -p /etc/todos && chown node:node /etc/todos
+USER node
 CMD ["node", "src/index.js"]
 
